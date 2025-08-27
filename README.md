@@ -1,10 +1,10 @@
 Movie_Bot_Java
 
-Design and develop a movie recommendation system in Python that allows users to discover movies based on their preferences such as genre, language, actor, or ratings. The system should analyze user inputs using recommendation algorithms (content-based, collaborative, or hybrid filtering) and suggest personalized movies. Importantly, it must provide only legal streaming or download links from authorized platforms like YouTube official channels, Internet Archive, Tubi, or legitimate OTT services.
+Design and develop a movie recommendation system in Python that allows users to discover movies based on their preferences such as genre, language, actor, or ratings. The system should analyze user inputs using recommendation algorithms (content-based, collaborative, or hybrid filtering) and suggest personalized movies. Importantly, it must provide only legal streaming or download links from authorized platforms using APIs.
 
 Functional Requirements
 1. User Interaction
-        ->Allow users to input preferences or search queries.
+        ->Allow users to enter movie title, language, and release year.
         ->Support user registration and login to personalize recommendations.
 
 2. Data Management
@@ -22,19 +22,23 @@ Functional Requirements
 5. System Interface
         ->Create a user-friendly interface to display recommendations and links.
 
-Non-Functional Requirements
-        ->Ensure ethical compliance by avoiding illegal sources.
-        ->Use scalable and maintainable architecture design.
-        ->Optimize recommendation accuracy and relevance.
-        ->Provide clear documentation and test cases.
+Tech Stack:
+        ->Programming Language: Java (JDK 21+ recommended)
+        ->Frontend (UI): Java Swing / JavaFX (or console mode)
+        ->API Integration: TMDb API/ OMDb API
+        ->HTTP Client: HttpURLConnection
+        ->Database : MySQL for storing favorites & history
+        ->Version Control: Git & GitHub
 
-Deliverables
-        ->Source code with documentation.
-        ->Design diagrams (system architecture, database schema).
-        ->Demo of user interaction and movie recommendations with legal access links.
-        ->Report explaining algorithms, data sources, and ethical considerations.
+OOP Concept:
+        ->Encapsulation: Securely stores movie details in classes.
+        ->Abstraction: Hides API integration details behind interfaces.
+        ->Inheritance: Reuses code by extending Movie for specific types.
+        ->Polymorphism: Displays different output depending on movie type.
+        ->Composition: MovieSearchManager contains and uses MovieService.
 
-Optional Enhancements
-        ->Incorporate sentiment analysis from user reviews to refine recommendations.
-        ->Implement user feedback mechanisms to improve recommendations over time.
-        ->Enable offline download options where legally supported by platforms.
+Setup & Installation:
+Prerequisites:
+        ->Java JDK 21+
+        ->Maven
+        ->API key from TMDb API.
