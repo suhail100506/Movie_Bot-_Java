@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - MovieBot</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-film"></i>
+                <span>MovieBot</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="movies.html" class="nav-link active">Movies</a></li>
+                <li><a href="genres.html" class="nav-link">Genres</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>All Movies</h1>
+            <p>Discover thousands of movies across all genres</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> <span>Movies</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="search-filter">
+                    <input type="text" placeholder="Search movies..." class="filter-search">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-options">
+                    <select class="filter-select" id="genreFilter">
+                        <option value="">All Genres</option>
+                        <option value="action">Action</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="drama">Drama</option>
+                        <option value="horror">Horror</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                    </select>
+                    <select class="filter-select" id="yearFilter">
+                        <option value="">All Years</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    <select class="filter-select" id="ratingFilter">
+                        <option value="">All Ratings</option>
+                        <option value="9+">9.0+ Rating</option>
+                        <option value="8+">8.0+ Rating</option>
+                        <option value="7+">7.0+ Rating</option>
+                        <option value="6+">6.0+ Rating</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movies Grid -->
+    <section class="movies-section">
+        <div class="container">
+            <div class="movies-grid">
+                <!-- Movie cards will be populated here -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://via.placeholder.com/300x450/1a1a2e/ff6b35?text=The+Dark+Knight" alt="The Dark Knight">
+                        <div class="movie-overlay">
+                            <a href="movie-detail.html?id=1" class="btn btn-primary">View Details</a>
+                            <button class="btn btn-outline add-to-list"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>The Dark Knight</h3>
+                        <p class="movie-year">2008</p>
+                        <div class="movie-rating">⭐ 9.0</div>
+                        <div class="movie-genres">
+                            <span class="genre-tag">Action</span>
+                            <span class="genre-tag">Crime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://via.placeholder.com/300x450/1a1a2e/ff6b35?text=Inception" alt="Inception">
+                        <div class="movie-overlay">
+                            <a href="movie-detail.html?id=2" class="btn btn-primary">View Details</a>
+                            <button class="btn btn-outline add-to-list"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>Inception</h3>
+                        <p class="movie-year">2010</p>
+                        <div class="movie-rating">⭐ 8.8</div>
+                        <div class="movie-genres">
+                            <span class="genre-tag">Sci-Fi</span>
+                            <span class="genre-tag">Thriller</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://via.placeholder.com/300x450/1a1a2e/ff6b35?text=Interstellar" alt="Interstellar">
+                        <div class="movie-overlay">
+                            <a href="movie-detail.html?id=3" class="btn btn-primary">View Details</a>
+                            <button class="btn btn-outline add-to-list"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>Interstellar</h3>
+                        <p class="movie-year">2014</p>
+                        <div class="movie-rating">⭐ 8.6</div>
+                        <div class="movie-genres">
+                            <span class="genre-tag">Drama</span>
+                            <span class="genre-tag">Sci-Fi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://via.placeholder.com/300x450/1a1a2e/ff6b35?text=Pulp+Fiction" alt="Pulp Fiction">
+                        <div class="movie-overlay">
+                            <a href="movie-detail.html?id=4" class="btn btn-primary">View Details</a>
+                            <button class="btn btn-outline add-to-list"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>Pulp Fiction</h3>
+                        <p class="movie-year">1994</p>
+                        <div class="movie-rating">⭐ 8.9</div>
+                        <div class="movie-genres">
+                            <span class="genre-tag">Crime</span>
+                            <span class="genre-tag">Drama</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://via.placeholder.com/300x450/1a1a2e/ff6b35?text=The+Godfather" alt="The Godfather">
+                        <div class="movie-overlay">
+                            <a href="movie-detail.html?id=5" class="btn btn-primary">View Details</a>
+                            <button class="btn btn-outline add-to-list"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>The Godfather</h3>
+                        <p class="movie-year">1972</p>
+                        <div class="movie-rating">⭐ 9.2</div>
+                        <div class="movie-genres">
+                            <span class="genre-tag">Crime</span>
+                            <span class="genre-tag">Drama</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://via.placeholder.com/300x450/1a1a2e/ff6b35?text=Shawshank" alt="The Shawshank Redemption">
+                        <div class="movie-overlay">
+                            <a href="movie-detail.html?id=6" class="btn btn-primary">View Details</a>
+                            <button class="btn btn-outline add-to-list"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3>The Shawshank Redemption</h3>
+                        <p class="movie-year">1994</p>
+                        <div class="movie-rating">⭐ 9.3</div>
+                        <div class="movie-genres">
+                            <span class="genre-tag">Drama</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link disabled"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">5</a>
+                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-film"></i>
+                        <span>MovieBot</span>
+                    </div>
+                    <p>Your personal movie recommendation system powered by advanced AI algorithms.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="movies.html">Movies</a></li>
+                        <li><a href="genres.html">Genres</a></li>
+                        <li><a href="recommendations.html">Recommendations</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Account</h3>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Sign Up</a></li>
+                        <li><a href="profile.html">My Profile</a></li>
+                        <li><a href="watchlist.html">Watchlist</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MovieBot. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
