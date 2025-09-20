@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres - MovieBot</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-film"></i>
+                <span>MovieBot</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="movies.html" class="nav-link">Movies</a></li>
+                <li><a href="genres.html" class="nav-link active">Genres</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Movie Genres</h1>
+            <p>Explore movies by your favorite genres and discover new favorites</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> <span>Genres</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genres Grid -->
+    <section class="genres-main-section">
+        <div class="container">
+            <div class="genres-grid-large">
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=action'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/ff6b35/fff?text=ACTION" alt="Action Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-fist-raised"></i>
+                        </div>
+                        <h2>Action</h2>
+                        <p>High-octane thrills, explosive sequences, and adrenaline-pumping adventures.</p>
+                        <div class="genre-stats">
+                            <span>2,450+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=comedy'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/f7931e/fff?text=COMEDY" alt="Comedy Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-laugh"></i>
+                        </div>
+                        <h2>Comedy</h2>
+                        <p>Hilarious moments, witty dialogue, and entertainment that brings joy and laughter.</p>
+                        <div class="genre-stats">
+                            <span>1,890+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=drama'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/764ba2/fff?text=DRAMA" alt="Drama Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-theater-masks"></i>
+                        </div>
+                        <h2>Drama</h2>
+                        <p>Compelling stories, complex characters, and emotional narratives that touch the heart.</p>
+                        <div class="genre-stats">
+                            <span>3,200+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=horror'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/dc2626/fff?text=HORROR" alt="Horror Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                        <h2>Horror</h2>
+                        <p>Spine-chilling scares, supernatural elements, and suspenseful storytelling.</p>
+                        <div class="genre-stats">
+                            <span>1,650+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=romance'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/ec4899/fff?text=ROMANCE" alt="Romance Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h2>Romance</h2>
+                        <p>Love stories, passionate relationships, and heartwarming tales of connection.</p>
+                        <div class="genre-stats">
+                            <span>2,100+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=sci-fi'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/3b82f6/fff?text=SCI-FI" alt="Sci-Fi Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h2>Science Fiction</h2>
+                        <p>Futuristic adventures, advanced technology, and exploration of the unknown.</p>
+                        <div class="genre-stats">
+                            <span>1,750+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=thriller'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/1f2937/fff?text=THRILLER" alt="Thriller Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h2>Thriller</h2>
+                        <p>Edge-of-your-seat suspense, psychological tension, and unexpected twists.</p>
+                        <div class="genre-stats">
+                            <span>2,300+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-card-large" onclick="window.location.href='movies.html?genre=adventure'">
+                    <div class="genre-backdrop">
+                        <img src="https://via.placeholder.com/400x250/059669/fff?text=ADVENTURE" alt="Adventure Movies">
+                        <div class="genre-overlay"></div>
+                    </div>
+                    <div class="genre-content">
+                        <div class="genre-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h2>Adventure</h2>
+                        <p>Epic journeys, exciting quests, and exploration of new worlds and experiences.</p>
+                        <div class="genre-stats">
+                            <span>1,980+ Movies</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular in Each Genre -->
+    <section class="popular-by-genre">
+        <div class="container">
+            <h2 class="section-title">Popular in Each Genre</h2>
+            <div class="genre-samples">
+                <div class="genre-sample">
+                    <h3><i class="fas fa-fist-raised"></i> Top Action Movies</h3>
+                    <div class="sample-movies">
+                        <div class="sample-movie-card">
+                            <img src="https://via.placeholder.com/150x225/1a1a2e/ff6b35?text=John+Wick" alt="John Wick">
+                            <div class="sample-info">
+                                <h4>John Wick</h4>
+                                <p>⭐ 7.4</p>
+                            </div>
+                        </div>
+                        <div class="sample-movie-card">
+                            <img src="https://via.placeholder.com/150x225/1a1a2e/ff6b35?text=Mad+Max" alt="Mad Max">
+                            <div class="sample-info">
+                                <h4>Mad Max: Fury Road</h4>
+                                <p>⭐ 8.1</p>
+                            </div>
+                        </div>
+                        <div class="sample-movie-card">
+                            <img src="https://via.placeholder.com/150x225/1a1a2e/ff6b35?text=Mission" alt="Mission Impossible">
+                            <div class="sample-info">
+                                <h4>Mission: Impossible</h4>
+                                <p>⭐ 7.1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="genre-sample">
+                    <h3><i class="fas fa-laugh"></i> Top Comedy Movies</h3>
+                    <div class="sample-movies">
+                        <div class="sample-movie-card">
+                            <img src="https://via.placeholder.com/150x225/1a1a2e/ff6b35?text=Superbad" alt="Superbad">
+                            <div class="sample-info">
+                                <h4>Superbad</h4>
+                                <p>⭐ 7.6</p>
+                            </div>
+                        </div>
+                        <div class="sample-movie-card">
+                            <img src="https://via.placeholder.com/150x225/1a1a2e/ff6b35?text=The+Hangover" alt="The Hangover">
+                            <div class="sample-info">
+                                <h4>The Hangover</h4>
+                                <p>⭐ 7.7</p>
+                            </div>
+                        </div>
+                        <div class="sample-movie-card">
+                            <img src="https://via.placeholder.com/150x225/1a1a2e/ff6b35?text=Anchorman" alt="Anchorman">
+                            <div class="sample-info">
+                                <h4>Anchorman</h4>
+                                <p>⭐ 7.2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-film"></i>
+                        <span>MovieBot</span>
+                    </div>
+                    <p>Your personal movie recommendation system.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="movies.html">Movies</a></li>
+                        <li><a href="genres.html">Genres</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MovieBot. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
