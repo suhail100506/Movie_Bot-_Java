@@ -22,3 +22,4 @@ public class WebServer {
 // Commit 3: Add movie search feature
 // Commit 4: Improve CSS styling
 // Commit 5: Refactor recommendation logic
+// Commit 6: Add user registration
