@@ -14,3 +14,8 @@ public class WebServer {
     }
 }
 // Commit 1: Update homepage layout
+// Commit 2: Add genre filter
+// Commit 3: Improve error handling
+// Commit 4: Add logout functionality
+// Commit 5: Enhance movie details page
+// Commit 2: Fix login bug
