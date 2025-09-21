@@ -27,3 +27,4 @@ public class WebServer {
 // Commit 8: Optimize database queries
 // Commit 9: Add genre filter
 // Commit 10: Fix typo in about.html
+// Commit 11: Improve error handling
