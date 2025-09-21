@@ -24,3 +24,4 @@ public class WebServer {
 // Commit 5: Refactor recommendation logic
 // Commit 6: Add user registration
 // Commit 7: Update README
+// Commit 8: Optimize database queries
