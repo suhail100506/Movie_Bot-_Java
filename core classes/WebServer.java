@@ -23,3 +23,4 @@ public class WebServer {
 // Commit 4: Improve CSS styling
 // Commit 5: Refactor recommendation logic
 // Commit 6: Add user registration
+// Commit 7: Update README
