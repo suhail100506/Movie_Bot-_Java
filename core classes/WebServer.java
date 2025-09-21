@@ -19,3 +19,4 @@ public class WebServer {
 // Commit 4: Add logout functionality
 // Commit 5: Enhance movie details page
 // Commit 2: Fix login bug
+// Commit 3: Add movie search feature
