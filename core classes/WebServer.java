@@ -25,3 +25,4 @@ public class WebServer {
 // Commit 6: Add user registration
 // Commit 7: Update README
 // Commit 8: Optimize database queries
+// Commit 9: Add genre filter
