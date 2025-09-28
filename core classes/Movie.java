@@ -1,6 +1,4 @@
-/**
- * Simple Movie class representing a movie
- */
+
 public class Movie {
     private int id;
     private String title;
@@ -9,9 +7,8 @@ public class Movie {
     private double rating;
     private String director;
     private String description;
-    private int duration; // in minutes
+    private int duration; 
 
-    // Constructor
     public Movie(int id, String title, String genre, int year, double rating, 
                  String director, String description, int duration) {
         this.id = id;
@@ -24,10 +21,8 @@ public class Movie {
         this.duration = duration;
     }
 
-    // Default constructor
     public Movie() {}
 
-    // Getters and Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -52,7 +47,6 @@ public class Movie {
     public int getDuration() { return duration; }
     public void setDuration(int duration) { this.duration = duration; }
 
-    // Utility methods
     public String getFormattedDuration() {
         int hours = duration / 60;
         int minutes = duration % 60;

@@ -1,9 +1,6 @@
 
 import java.util.*;
 
-/**
- * Main Movie Recommendation System Application
- */
 public class MovieRecommendationSystem {
 
     private MovieDatabase movieDatabase;
@@ -26,10 +23,6 @@ public class MovieRecommendationSystem {
     }
 
     public void run() {
-        System.out.println("🎬 Welcome to Movie Recommendation System! 🎬");
-        System.out.println("==========================================");
-        // ...main loop and logic...
+        // Removed print statements
     }
-    // ...other methods as needed...
 }
-// ...existing code...

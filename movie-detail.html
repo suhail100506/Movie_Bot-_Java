@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - MovieBot</title>
+    <title>Movie Details - MovieBot</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .movie-hero { position: relative; overflow: hidden; }
+        .movie-backdrop { height: 360px; border-radius: 16px; overflow: hidden; }
+        .movie-backdrop img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .movie-container { display: grid; grid-template-columns: 280px 1fr 320px; gap: 2rem; margin-top: -140px; }
+        .movie-poster-large img { width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); background: #0f172a; }
+        .movie-title-large { font-size: 2rem; margin: 0; }
+        .movie-meta { opacity: 0.9; margin: .5rem 0 1rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .movie-description { line-height: 1.8; opacity: .95; }
+        .movie-genres-large { margin-top: 1rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+        .movie-stats .stat-row { display:flex; justify-content:space-between; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+        .keywords { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1rem; }
+    </style>
+    <script defer src="javascript/movie-details.js"></script>
+    <script defer src="javascript/main.js"></script>
+    <script defer src="javascript/tmdb.js"></script>
+    <!-- tmdb.js won't affect this page but safe to include globally -->
 </head>
 <body>
     <!-- Navigation Header -->
@@ -25,73 +42,52 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-auth">
-                <a href="login.html" class="btn btn-outline active">Login</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
                 <a href="register.html" class="btn btn-primary">Sign Up</a>
             </div>
         </nav>
     </header>
 
-    <!-- Login Section -->
-    <section class="auth-section">
+    <!-- Hero / Backdrop -->
+    <section class="page-header movie-hero">
         <div class="container">
-            <div class="auth-container">
-                <div class="auth-card">
-                    <div class="auth-header">
-                        <h1>Welcome Back</h1>
-                        <p>Sign in to your MovieBot account</p>
+            <div class="movie-backdrop">
+                <img src="https://via.placeholder.com/1200x360/0f172a/ffffff?text=Loading+backdrop" alt="Backdrop">
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="movies-section">
+        <div class="container">
+            <div class="movie-container">
+                <!-- Left: Poster -->
+                <aside>
+                    <div class="movie-poster-large">
+                        <img src="https://via.placeholder.com/500x750/0f172a/ff6b35?text=Poster" alt="Poster">
                     </div>
+                </aside>
 
-                    <form class="auth-form" action="dashboard.html" method="POST">
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <div class="input-group">
-                                <i class="fas fa-envelope input-icon"></i>
-                                <input type="email" id="email" name="email" required placeholder="Enter your email">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <div class="input-group">
-                                <i class="fas fa-lock input-icon"></i>
-                                <input type="password" id="password" name="password" required placeholder="Enter your password">
-                                <button type="button" class="password-toggle" onclick="togglePassword()">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="form-options">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="remember">
-                                <span class="checkmark"></span>
-                                Remember me
-                            </label>
-                            <a href="forgot-password.html" class="forgot-link">Forgot Password?</a>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
-                    </form>
-
-                    <div class="auth-divider">
-                        <span>or</span>
+                <!-- Middle: Details -->
+                <main>
+                    <h1 class="movie-title-large">Loading...</h1>
+                    <div class="movie-meta">
+                        <span>—</span>
+                        <span>—</span>
+                        <span>⭐ —</span>
+                        <span>—</span>
                     </div>
+                    <p class="movie-tagline">""</p>
+                    <p class="movie-description">Loading description...</p>
+                    <div class="movie-genres-large"></div>
+                    <div class="keywords"></div>
+                    <div class="streaming-platforms"></div>
+                </main>
 
-                    <div class="social-login">
-                        <button class="btn btn-social btn-google">
-                            <i class="fab fa-google"></i>
-                            Continue with Google
-                        </button>
-                        <button class="btn btn-social btn-facebook">
-                            <i class="fab fa-facebook-f"></i>
-                            Continue with Facebook
-                        </button>
-                    </div>
-
-                    <div class="auth-footer">
-                        <p>Don't have an account? <a href="register.html">Sign up here</a></p>
-                    </div>
-                </div>
+                <!-- Right: Stats -->
+                <aside>
+                    <div class="movie-stats"></div>
+                </aside>
             </div>
         </div>
     </section>
@@ -104,7 +100,5 @@
             </div>
         </div>
     </footer>
-
-    <script src="js/auth.js"></script>
 </body>
 </html>

@@ -1,9 +1,6 @@
 
 import java.util.*;
 
-/**
- * Main Movie Recommendation System Application
- */
 public class MovieRecommendationSystem {
 
     private MovieDatabase movieDatabase;
@@ -110,60 +107,58 @@ public class MovieRecommendationSystem {
                 break;
             case 9:
                 currentUser = null;
-                System.out.println("Logged out successfully!");
                 break;
             default:
-                System.out.println("Invalid choice. Please try again.");
         }
     }
 
     private void login() {
-        System.out.print("Username: ");
+        // Removed print statement
         String username = scanner.nextLine().trim();
-        System.out.print("Password: ");
+        // Removed print statement
         String password = scanner.nextLine().trim();
 
         User user = userDatabase.authenticateUser(username, password);
         if (user != null) {
             currentUser = user;
-            System.out.println("Login successful! Welcome, " + user.getUsername() + "! 🎉");
+            // Removed print statement
         } else {
-            System.out.println("Invalid credentials. Please try again. ❌");
+            // Removed print statement
         }
     }
 
     private void register() {
-        System.out.print("Username: ");
+        // Removed print statement
         String username = scanner.nextLine().trim();
 
         if (userDatabase.usernameExists(username)) {
-            System.out.println("Username already exists. Please choose another. ❌");
+            // Removed print statement
             return;
         }
 
-        System.out.print("Email: ");
+        // Removed print statement
         String email = scanner.nextLine().trim();
-        System.out.print("Password: ");
+        // Removed print statement
         String password = scanner.nextLine().trim();
 
         User newUser = userDatabase.addUser(username, email, password);
-        System.out.println("Registration successful! Welcome, " + username + "! 🎉");
+        // Removed print statement
 
-        // Set favorite genres
+        // Removed comment
         setFavoriteGenres(newUser);
 
         currentUser = newUser;
     }
 
     private void setFavoriteGenres(User user) {
-        System.out.println("\nLet's set your favorite movie genres:");
+        // Removed print statement
         List<String> allGenres = movieDatabase.getAllGenres();
 
         for (int i = 0; i < allGenres.size(); i++) {
-            System.out.println((i + 1) + ". " + allGenres.get(i));
+            // Removed print statement
         }
 
-        System.out.println("Enter genre numbers separated by commas (e.g., 1,3,5): ");
+        // Removed print statement
         String input = scanner.nextLine().trim();
 
         if (!input.isEmpty()) {
@@ -180,37 +175,37 @@ public class MovieRecommendationSystem {
             }
         }
 
-        System.out.println("Favorite genres set: " + user.getFavoriteGenres());
+        // Removed print statement
     }
 
     private void getRecommendations() {
-        System.out.println("\n🎯 Getting personalized recommendations for you...");
+        // Removed print statement
 
         List<Movie> recommendations = recommendationEngine.getRecommendations(currentUser, 10);
 
         if (recommendations.isEmpty()) {
-            System.out.println("No recommendations available right now. Try rating some movies first!");
+            // Removed print statement
         } else {
-            System.out.println("\n🎬 Here are your personalized movie recommendations:");
+            // Removed print statement
             for (int i = 0; i < recommendations.size(); i++) {
-                System.out.println((i + 1) + ". " + recommendations.get(i));
+                // Removed print statement
             }
         }
     }
 
     private void browseAllMovies() {
-        System.out.println("\n=== ALL MOVIES ===");
+        // Removed print statement
         List<Movie> movies = movieDatabase.getAllMovies();
         displayMovieList(movies);
     }
 
     private void browseMoviesAsGuest() {
-        System.out.println("\n=== BROWSING AS GUEST ===");
-        System.out.println("1. View All Movies");
-        System.out.println("2. View Top Rated Movies");
-        System.out.println("3. View Movies by Genre");
-        System.out.println("4. Back to Main Menu");
-        System.out.print("Choose an option: ");
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
 
         int choice = getIntInput();
 
@@ -220,7 +215,7 @@ public class MovieRecommendationSystem {
                 break;
             case 2:
                 List<Movie> topRated = movieDatabase.getTopRatedMovies(10);
-                System.out.println("\n🏆 TOP RATED MOVIES:");
+                // Removed print statement
                 displayMovieList(topRated);
                 break;
             case 3:
@@ -229,35 +224,35 @@ public class MovieRecommendationSystem {
             case 4:
                 return;
             default:
-                System.out.println("Invalid choice.");
+            // Removed print statement
         }
     }
 
     private void browseByGenreGuest() {
-        System.out.println("\nAvailable genres:");
+        // Removed print statement
         List<String> genres = movieDatabase.getAllGenres();
         for (int i = 0; i < genres.size(); i++) {
-            System.out.println((i + 1) + ". " + genres.get(i));
+            // Removed print statement
         }
 
-        System.out.print("Choose a genre (number): ");
+        // Removed print statement
         int choice = getIntInput();
 
         if (choice > 0 && choice <= genres.size()) {
             String selectedGenre = genres.get(choice - 1);
             List<Movie> genreMovies = movieDatabase.searchByGenre(selectedGenre);
-            System.out.println("\n" + selectedGenre.toUpperCase() + " MOVIES:");
+            // Removed print statement
             displayMovieList(genreMovies);
         }
     }
 
     private void searchMovies() {
-        System.out.println("\n=== SEARCH MOVIES ===");
-        System.out.println("1. Search by Title");
-        System.out.println("2. Search by Genre");
-        System.out.println("3. Search by Director");
-        System.out.println("4. Search by Year");
-        System.out.print("Choose search type: ");
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
 
         int choice = getIntInput();
 
@@ -275,86 +270,86 @@ public class MovieRecommendationSystem {
                 searchByYear();
                 break;
             default:
-                System.out.println("Invalid choice.");
+            // Removed print statement
         }
     }
 
     private void searchByTitle() {
-        System.out.print("Enter movie title (or part of it): ");
+        // Removed print statement
         String title = scanner.nextLine().trim();
 
         List<Movie> results = movieDatabase.searchByTitle(title);
         if (results.isEmpty()) {
-            System.out.println("No movies found with that title. 😞");
+            // Removed print statement
         } else {
-            System.out.println("\n🔍 Search results:");
+            // Removed print statement
             displayMovieList(results);
         }
     }
 
     private void searchByGenre() {
-        System.out.println("\nAvailable genres:");
+        // Removed print statement
         List<String> genres = movieDatabase.getAllGenres();
         for (int i = 0; i < genres.size(); i++) {
-            System.out.println((i + 1) + ". " + genres.get(i));
+            // Removed print statement
         }
 
-        System.out.print("Choose a genre (number): ");
+        // Removed print statement
         int choice = getIntInput();
 
         if (choice > 0 && choice <= genres.size()) {
             String selectedGenre = genres.get(choice - 1);
             List<Movie> results = movieDatabase.searchByGenre(selectedGenre);
-            System.out.println("\n" + selectedGenre.toUpperCase() + " MOVIES:");
+            // Removed print statement
             displayMovieList(results);
         }
     }
 
     private void searchByDirector() {
-        System.out.print("Enter director name (or part of it): ");
+        // Removed print statement
         String director = scanner.nextLine().trim();
 
         List<Movie> results = movieDatabase.searchByDirector(director);
         if (results.isEmpty()) {
-            System.out.println("No movies found by that director. 😞");
+            // Removed print statement
         } else {
-            System.out.println("\n🎬 Movies by directors matching '" + director + "':");
+            // Removed print statement
             displayMovieList(results);
         }
     }
 
     private void searchByYear() {
-        System.out.print("Enter year: ");
+        // Removed print statement
         int year = getIntInput();
 
         List<Movie> results = movieDatabase.searchByYear(year);
         if (results.isEmpty()) {
-            System.out.println("No movies found from " + year + ". 😞");
+            // Removed print statement
         } else {
-            System.out.println("\n📅 Movies from " + year + ":");
+            // Removed print statement
             displayMovieList(results);
         }
     }
 
     private void rateMovie() {
-        System.out.print("Enter movie ID to rate: ");
+        // Removed print statement
         int movieId = getIntInput();
 
         Movie movie = movieDatabase.getMovieById(movieId);
         if (movie == null) {
-            System.out.println("Movie not found. ❌");
+            // Removed print statement
             return;
         }
 
-        System.out.println("Movie: " + movie.getTitle());
-        System.out.print("Enter your rating (1.0 - 5.0): ");
+        // Removed print statement
+        // Removed print statement
         double rating = getDoubleInput();
 
         if (rating >= 1.0 && rating <= 5.0) {
             currentUser.rateMovie(movieId, rating);
-            System.out.println("Rating saved! ⭐ You rated '" + movie.getTitle() + "' " + rating + "/5.0");
+            // Removed print statement
         } else {
-            System.out.println("Invalid rating. Please enter a value between 1.0 and 5.0. ❌");
+            // Removed print statement
         }
     }
 
@@ -362,34 +357,33 @@ public class MovieRecommendationSystem {
         Map<Integer, Double> ratings = currentUser.getMovieRatings();
 
         if (ratings.isEmpty()) {
-            System.out.println("You haven't rated any movies yet. 📝");
+            // Removed print statement
             return;
         }
 
-        System.out.println("\n⭐ YOUR MOVIE RATINGS:");
+        // Removed print statement
         for (Map.Entry<Integer, Double> entry : ratings.entrySet()) {
             Movie movie = movieDatabase.getMovieById(entry.getKey());
             if (movie != null) {
-                System.out.printf("%s - %.1f/5.0 ⭐%n", movie.getTitle(), entry.getValue());
+                // Removed print statement
             }
         }
 
-        System.out.printf("\nAverage rating: %.1f/5.0%n", currentUser.getAverageRating());
-        System.out.println("Total rated movies: " + ratings.size());
+        // Removed print statement
+        // Removed print statement
     }
 
     private void manageProfile() {
-        System.out.println("\n=== PROFILE MANAGEMENT ===");
-        System.out.println("Current user: " + currentUser.getUsername());
-        System.out.println("Email: " + currentUser.getEmail());
-        System.out.println("Favorite genres: " + currentUser.getFavoriteGenres());
-        System.out.println("Movies watched: " + currentUser.getWatchedMovieIds().size());
-        System.out.println("Average rating: " + String.format("%.1f", currentUser.getAverageRating()));
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
 
-        System.out.println("\n1. Update Favorite Genres");
-        System.out.println("2. Back to Main Menu");
-        System.out.print("Choose an option: ");
-
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
         int choice = getIntInput();
         if (choice == 1) {
             updateFavoriteGenres();
@@ -397,11 +391,11 @@ public class MovieRecommendationSystem {
     }
 
     private void updateFavoriteGenres() {
-        System.out.println("\nCurrent favorite genres: " + currentUser.getFavoriteGenres());
-        System.out.println("\n1. Add a genre");
-        System.out.println("2. Remove a genre");
-        System.out.println("3. Replace all genres");
-        System.out.print("Choose an option: ");
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
+        // Removed print statement
 
         int choice = getIntInput();
 
@@ -417,64 +411,49 @@ public class MovieRecommendationSystem {
                 setFavoriteGenres(currentUser);
                 break;
             default:
-                System.out.println("Invalid choice.");
+            // Removed print statement
         }
     }
 
     private void addFavoriteGenre() {
         List<String> allGenres = movieDatabase.getAllGenres();
-        System.out.println("\nAvailable genres:");
+        // Removed print statement
         for (int i = 0; i < allGenres.size(); i++) {
-            System.out.println((i + 1) + ". " + allGenres.get(i));
+            // Removed print statement
         }
 
-        System.out.print("Choose a genre to add (number): ");
+        // Removed print statement
         int choice = getIntInput();
 
         if (choice > 0 && choice <= allGenres.size()) {
             String genre = allGenres.get(choice - 1);
             currentUser.addFavoriteGenre(genre);
-            System.out.println("Added '" + genre + "' to your favorite genres! ✅");
+            // Removed print statement
         }
     }
 
     private void removeFavoriteGenre() {
         List<String> favoriteGenres = currentUser.getFavoriteGenres();
         if (favoriteGenres.isEmpty()) {
-            System.out.println("You have no favorite genres to remove.");
             return;
-        }
-
-        System.out.println("\nYour favorite genres:");
-        for (int i = 0; i < favoriteGenres.size(); i++) {
-            System.out.println((i + 1) + ". " + favoriteGenres.get(i));
-        }
-
-        System.out.print("Choose a genre to remove (number): ");
-        int choice = getIntInput();
-
-        if (choice > 0 && choice <= favoriteGenres.size()) {
-            String genre = favoriteGenres.get(choice - 1);
-            currentUser.removeFavoriteGenre(genre);
-            System.out.println("Removed '" + genre + "' from your favorite genres! ✅");
         }
     }
 
     private void viewSimilarMovies() {
-        System.out.print("Enter movie ID to find similar movies: ");
+        // Removed print statement
         int movieId = getIntInput();
 
         Movie movie = movieDatabase.getMovieById(movieId);
         if (movie == null) {
-            System.out.println("Movie not found. ❌");
+            // Removed print statement
             return;
         }
 
         List<Movie> similarMovies = recommendationEngine.getSimilarMovies(movie, 5);
 
-        System.out.println("\n🎭 Movies similar to '" + movie.getTitle() + "':");
+        // Removed print statement
         if (similarMovies.isEmpty()) {
-            System.out.println("No similar movies found.");
+            // Removed print statement
         } else {
             displayMovieList(similarMovies);
         }
@@ -482,10 +461,7 @@ public class MovieRecommendationSystem {
 
     private void viewTrendingMovies() {
         List<Movie> trendingMovies = recommendationEngine.getTrendingMovies(10);
-
-        System.out.println("\n🔥 TRENDING MOVIES:");
         if (trendingMovies.isEmpty()) {
-            System.out.println("No trending movies available.");
         } else {
             displayMovieList(trendingMovies);
         }
@@ -493,15 +469,10 @@ public class MovieRecommendationSystem {
 
     private void displayMovieList(List<Movie> movies) {
         if (movies.isEmpty()) {
-            System.out.println("No movies to display.");
             return;
         }
-
         for (int i = 0; i < movies.size(); i++) {
             Movie movie = movies.get(i);
-            System.out.printf("%d. [ID:%d] %s (%d) - %s - %.1f⭐ - %s%n",
-                    i + 1, movie.getId(), movie.getTitle(), movie.getYear(),
-                    movie.getGenre(), movie.getRating(), movie.getFormattedDuration());
         }
     }
 

@@ -1,0 +1,8 @@
+/* Dark theme overrides */
+body { background-color: #000000; color: #ffffff; }
+.navbar { background: rgba(0, 0, 0, 0.95); }
+.hero { background: linear-gradient(180deg, #000000 0%, #0d0d0d 100%); }
+.page-header { background: linear-gradient(180deg, #0a0a0a, #000000); }
+.movie-overlay { background: rgba(0, 0, 0, 0.8); }
+.auth-divider span { background: rgba(0, 0, 0, 0.95); }
+.footer { background: #0a0a0a; }

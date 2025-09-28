@@ -3,6 +3,8 @@
 // Get movie ID from URL
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get('id') || '1';
+const API_BASE = '/api/tmdb';
+const IMG_BASE = 'https://image.tmdb.org/t/p';
 
 // Initialize movie detail page
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,177 +17,46 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize movie detail functionality
 function initializeMovieDetail() {
     console.log('Loading movie details for ID:', movieId);
-
-    // Update page title
-    document.title = 'Loading... - MovieBot';
-
-    // Setup breadcrumb
-    updateBreadcrumb();
-
-    // Setup trailer modal
-    setupTrailerModal();
-
-    // Setup similar movies
-    setupSimilarMovies();
-
-    // Check user watchlist status
-    checkWatchlistStatus();
-}
-
-// Setup movie actions
-function setupMovieActions() {
-    // Watch trailer button
-    const trailerBtn = document.querySelector('.btn-primary');
-    if (trailerBtn && trailerBtn.textContent.includes('Trailer')) {
-        trailerBtn.addEventListener('click', function() {
-            showTrailer(movieId);
-        });
-    }
-
-    // Add to watchlist button
-    const watchlistBtn = document.querySelector('.btn-outline');
-    if (watchlistBtn && watchlistBtn.textContent.includes('Watchlist')) {
-        watchlistBtn.addEventListener('click', function() {
-            toggleWatchlist(movieId);
-        });
-    }
-
-    // Streaming platform buttons
-    const platformBtns = document.querySelectorAll('.platform-btn, .btn-small');
-    platformBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const platform = this.textContent.trim();
-            openStreamingPlatform(platform, movieId);
-        });
-    });
-}
-
-// Setup rating system
-function setupRatingSystem() {
-    const stars = document.querySelectorAll('.star-rating i');
-    let currentRating = 0;
-
-    stars.forEach((star, index) => {
-        star.addEventListener('mouseenter', function() {
-            highlightStars(index + 1);
-        });
-
-        star.addEventListener('mouseleave', function() {
-            highlightStars(currentRating);
-        });
-
-        star.addEventListener('click', function() {
-            currentRating = index + 1;
-            rateMovie(movieId, currentRating);
-            highlightStars(currentRating);
-        });
-    });
-
-    // Load existing rating
-    loadUserRating();
-}
-
-// Highlight stars up to rating
-function highlightStars(rating) {
-    const stars = document.querySelectorAll('.star-rating i');
-    stars.forEach((star, index) => {
-        if (index < rating) {
-            star.className = 'fas fa-star active';
-        } else {
-            star.className = 'far fa-star';
-        }
-    });
-}
-
-// Rate movie
-function rateMovie(movieId, rating) {
-    const currentUser = JSON.parse(localStorage.getItem('moviebot_user'));
-
-    if (!currentUser) {
-        if (window.MovieBot) {
-            window.MovieBot.showNotification('Please login to rate movies', 'warning');
-        }
-        window.location.href = 'login.html';
-        return;
-    }
-
-    // Store rating
-    let ratings = JSON.parse(localStorage.getItem('moviebot_ratings')) || {};
-    ratings[movieId] = {
-        rating: rating,
-        date: new Date().toISOString(),
-        userId: currentUser.id
-    };
-    localStorage.setItem('moviebot_ratings', JSON.stringify(ratings));
-
-    if (window.MovieBot) {
-        window.MovieBot.showNotification(`You rated this movie ${rating} star${rating !== 1 ? 's' : ''}`, 'success');
-    }
-
-    // Update UI
-    updateRatingDisplay(rating);
-}
-
-// Load user rating
-function loadUserRating() {
-    const ratings = JSON.parse(localStorage.getItem('moviebot_ratings')) || {};
-    const userRating = ratings[movieId];
-
-    if (userRating) {
-        highlightStars(userRating.rating);
-    }
-}
-
-// Update rating display
-function updateRatingDisplay(rating) {
-    const ratingText = document.querySelector('.user-rating span');
-    if (ratingText) {
-        ratingText.textContent = `Your rating: ${rating}/5`;
-    }
 }
 
 // Load movie data
-function loadMovieData() {
-    // In a real application, this would fetch from API
-    // For demo purposes, we'll use mock data
+async function loadMovieData() {
+    try {
+        const res = await fetch(`${API_BASE}/movie/${movieId}`, { headers: { 'Accept': 'application/json' } });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const m = await res.json();
 
-    const mockMovieData = {
-        1: {
-            title: 'The Dark Knight',
-            year: 2008,
-            rating: 9.0,
-            runtime: 152,
-            director: 'Christopher Nolan',
-            cast: ['Christian Bale', 'Heath Ledger', 'Aaron Eckhart', 'Maggie Gyllenhaal'],
-            genres: ['Action', 'Crime', 'Drama', 'Thriller'],
-            overview: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
-            tagline: 'Why So Serious?',
-            budget: '$185,000,000',
-            boxOffice: '$1,006,234,167',
-            language: 'English',
-            country: 'United States, United Kingdom',
-            keywords: ['superhero', 'vigilante', 'gotham city', 'joker', 'batman', 'dark', 'crime fighter'],
-            streaming: [
-                { platform: 'Netflix', type: 'subscription', url: '#' },
-                { platform: 'HBO Max', type: 'subscription', url: '#' },
-                { platform: 'Amazon Prime', type: 'rent', price: '$3.99', url: '#' }
-            ]
-        }
-    };
+        // Map TMDB response to our UI fields
+        const movie = {
+            title: m.title || m.name || 'Untitled',
+            year: (m.release_date || m.first_air_date || '').slice(0,4) || '—',
+            rating: m.vote_average || 0,
+            runtime: m.runtime || 0,
+            director: (m.credits?.crew || []).find(p => p.job === 'Director')?.name || '—',
+            cast: (m.credits?.cast || []).slice(0,6).map(p => p.name),
+            genres: (m.genres || []).map(g => g.name),
+            overview: m.overview || '',
+            tagline: m.tagline || '',
+            budget: m.budget ? `$${m.budget.toLocaleString()}` : '—',
+            boxOffice: m.revenue ? `$${m.revenue.toLocaleString()}` : '—',
+            language: m.original_language || '—',
+            country: (m.production_countries || []).map(c => c.name).join(', ') || '—',
+            keywords: (m.keywords?.keywords || m.keywords?.results || []).map(k => k.name).slice(0,10),
+            streaming: [],
+            poster: m.poster_path ? `${IMG_BASE}/w500${m.poster_path}` : '',
+            backdrop: m.backdrop_path ? `${IMG_BASE}/original${m.backdrop_path}` : ''
+        };
 
-    const movie = mockMovieData[movieId] || mockMovieData[1];
+        updateMovieContent(movie);
+        document.title = `${movie.title} (${movie.year}) - MovieBot`;
 
-    // Update page content
-    updateMovieContent(movie);
-
-    // Update page title
-    document.title = `${movie.title} (${movie.year}) - MovieBot`;
-}
-
-// Update movie content
-function updateMovieContent(movie) {
-    // Update title
+        // Update images
+        const posterImg = document.querySelector('.movie-poster-large img');
+        if (posterImg && movie.poster) posterImg.src = movie.poster;
+        const backdropImg = document.querySelector('.movie-backdrop img');
+        if (backdropImg && movie.backdrop) backdropImg.src = movie.backdrop;
+    } catch (e) {
+        console.error('Failed to load movie', e);
     const titleElement = document.querySelector('.movie-title-large');
     if (titleElement) {
         titleElement.textContent = movie.title;

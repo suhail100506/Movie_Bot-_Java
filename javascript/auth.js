@@ -28,7 +28,6 @@ function initializeAuth() {
 
     // Setup password strength checker for register page
     if (currentPage === 'register.html') {
-        setupPasswordStrength();
         setupGenreSelection();
     }
 }
@@ -37,22 +36,18 @@ function initializeAuth() {
 function handleAuthSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const formType = e.target.action.includes('login') ? 'login' : 
-                     e.target.action.includes('register') ? 'register' : 
-                     getFormType();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // Robust form type detection (independent of action URL)
+    const isRegister = !!(form.querySelector('#confirmPassword') || form.querySelector('[name="terms"]'));
+    const formType = isRegister ? 'register' : 'login';
 
     if (formType === 'login') {
         handleLogin(formData);
-    } else if (formType === 'register') {
+    } else {
         handleRegister(formData);
     }
-}
-
-// Determine form type based on current page
-function getFormType() {
-    const currentPage = window.location.pathname.split('/').pop();
-    return currentPage === 'login.html' ? 'login' : 'register';
 }
 
 // Handle login
@@ -389,7 +384,6 @@ function updatePasswordStrengthUI(strength) {
 // Setup genre selection
 function setupGenreSelection() {
     const genreCheckboxes = document.querySelectorAll('.genre-checkbox input');
-
     genreCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             const tag = this.nextElementSibling;
@@ -406,10 +400,9 @@ function setupGenreSelection() {
     });
 }
 
-// Setup social login
+// Setup social login (mocked)
 function setupSocialLogin() {
     const socialButtons = document.querySelectorAll('.btn-social');
-
     socialButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -419,26 +412,30 @@ function setupSocialLogin() {
     });
 }
 
-// Handle social login
 function handleSocialLogin(provider) {
-    showAuthNotification(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login is not implemented yet`, 'info');
-
-    // In a real application, this would redirect to OAuth provider
-    console.log(`Initiating ${provider} login...`);
+    const display = provider.charAt(0).toUpperCase() + provider.slice(1);
+    const user = {
+        id: Date.now(),
+        email: `${provider}_user@example.com`,
+        name: `${display} User`,
+        provider,
+        loginTime: new Date().toISOString(),
+        preferences: {}
+    };
+    localStorage.setItem('moviebot_user', JSON.stringify(user));
+    showAuthNotification(`${display} login successful!`, 'success');
+    setTimeout(() => { window.location.href = 'index.html'; }, 800);
 }
 
-// Show auth-specific notifications
+// Auth notifications
 function showAuthNotification(message, type = 'info') {
-    // Remove existing notifications
     const existing = document.querySelectorAll('.auth-notification');
     existing.forEach(notif => notif.remove());
 
-    // Create notification
     const notification = document.createElement('div');
     notification.className = `auth-notification notification-${type}`;
     notification.textContent = message;
 
-    // Style the notification
     Object.assign(notification.style, {
         position: 'fixed',
         top: '100px',
@@ -457,7 +454,6 @@ function showAuthNotification(message, type = 'info') {
         transition: 'opacity 0.3s ease'
     });
 
-    // Set background based on type
     const colors = {
         success: 'linear-gradient(135deg, #10b981, #059669)',
         error: 'linear-gradient(135deg, #ef4444, #dc2626)',
@@ -465,22 +461,11 @@ function showAuthNotification(message, type = 'info') {
     };
     notification.style.background = colors[type] || colors.info;
 
-    // Add to page
     document.body.appendChild(notification);
-
-    // Animate in
-    setTimeout(() => {
-        notification.style.opacity = '1';
-    }, 100);
-
-    // Remove after 4 seconds
+    setTimeout(() => { notification.style.opacity = '1'; }, 100);
     setTimeout(() => {
         notification.style.opacity = '0';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
+        setTimeout(() => { if (notification.parentNode) notification.parentNode.removeChild(notification); }, 300);
     }, 4000);
 }
 
