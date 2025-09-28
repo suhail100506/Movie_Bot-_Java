@@ -1,10 +1,6 @@
-
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Simple Movie Database class to store and manage movies
- */
 public class MovieDatabase {
 
     private List<Movie> movies;
@@ -13,12 +9,11 @@ public class MovieDatabase {
 
     public MovieDatabase() {
         this.movies = new ArrayList<>();
-        this.movieMap = new HashMap<>();
+        this.movieMap = new HashMap ();
         this.nextId = 1;
         initializeSampleMovies();
     }
 
-    // Initialize with some sample movies
     private void initializeSampleMovies() {
         addMovie("The Dark Knight", "Action", 2008, 9.0, "Christopher Nolan",
                 "Batman faces the Joker in this thrilling superhero film", 152);
@@ -30,7 +25,6 @@ public class MovieDatabase {
                 "Interconnected stories of crime and redemption in Los Angeles", 154);
         addMovie("Forrest Gump", "Drama", 1994, 8.8, "Robert Zemeckis",
                 "The life journey of a simple man who achieves extraordinary things", 142);
-        // ...add more sample movies as needed...
     }
 
     public void addMovie(String title, String genre, int year, double rating, String director, String description, int duration) {
@@ -84,7 +78,4 @@ public class MovieDatabase {
                 .limit(count)
                 .collect(Collectors.toList());
     }
-
-    // ...other methods as needed...
 }
-// ...existing code...

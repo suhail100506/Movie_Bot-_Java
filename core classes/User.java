@@ -1,8 +1,4 @@
 import java.util.*;
-
-/**
- * Simple User class representing a user in the system
- */
 public class User {
     private int userId;
     private String username;
@@ -10,10 +6,9 @@ public class User {
     private String password;
     private List<String> favoriteGenres;
     private List<Integer> watchedMovieIds;
-    private Map<Integer, Double> movieRatings; // movieId -> rating
+    private Map<Integer, Double> movieRatings;
     private Date joinDate;
 
-    // Constructor
     public User(int userId, String username, String email, String password) {
         this.userId = userId;
         this.username = username;
@@ -25,7 +20,6 @@ public class User {
         this.joinDate = new Date();
     }
 
-    // Default constructor
     public User() {
         this.favoriteGenres = new ArrayList<>();
         this.watchedMovieIds = new ArrayList<>();
@@ -33,7 +27,6 @@ public class User {
         this.joinDate = new Date();
     }
 
-    // Getters and Setters
     public int getUserId() { return userId; }
     public void setUserId(int userId) { this.userId = userId; }
 
@@ -58,7 +51,6 @@ public class User {
     public Date getJoinDate() { return joinDate; }
     public void setJoinDate(Date joinDate) { this.joinDate = joinDate; }
 
-    // Utility methods
     public void addFavoriteGenre(String genre) {
         if (!favoriteGenres.contains(genre)) {
             favoriteGenres.add(genre);
