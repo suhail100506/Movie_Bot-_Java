@@ -1,8 +1,4 @@
 import java.util.*;
-
-/**
- * Simple User Database class to store and manage users
- */
 public class UserDatabase {
     private List<User> users;
     private Map<Integer, User> userMap;
@@ -17,43 +13,40 @@ public class UserDatabase {
         initializeSampleUsers();
     }
 
-    // Initialize with sample users
     private void initializeSampleUsers() {
-        // Create sample users with different preferences
         User alice = addUser("alice", "alice@email.com", "password123");
         alice.addFavoriteGenre("Action");
         alice.addFavoriteGenre("Sci-Fi");
-        alice.rateMovie(1, 5.0); // The Dark Knight
-        alice.rateMovie(6, 4.5); // Inception
-        alice.rateMovie(7, 4.0); // The Matrix
-        alice.rateMovie(14, 4.0); // The Avengers
+        alice.rateMovie(1, 5.0);
+        alice.rateMovie(6, 4.5);
+        alice.rateMovie(7, 4.0);
+        alice.rateMovie(14, 4.0);
 
         User bob = addUser("bob", "bob@email.com", "password123");
         bob.addFavoriteGenre("Drama");
         bob.addFavoriteGenre("Crime");
-        bob.rateMovie(2, 5.0); // The Shawshank Redemption
-        bob.rateMovie(3, 4.5); // The Godfather
-        bob.rateMovie(4, 4.0); // Pulp Fiction
-        bob.rateMovie(8, 4.5); // Goodfellas
+        bob.rateMovie(2, 5.0);
+        bob.rateMovie(3, 4.5);
+        bob.rateMovie(4, 4.0);
+        bob.rateMovie(8, 4.5);
 
         User charlie = addUser("charlie", "charlie@email.com", "password123");
         charlie.addFavoriteGenre("Animation");
         charlie.addFavoriteGenre("Adventure");
-        charlie.rateMovie(16, 5.0); // The Lion King
-        charlie.rateMovie(17, 4.5); // Finding Nemo
-        charlie.rateMovie(18, 4.0); // Toy Story
-        charlie.rateMovie(15, 4.0); // Jurassic Park
+        charlie.rateMovie(16, 5.0);
+        charlie.rateMovie(17, 4.5);
+        charlie.rateMovie(18, 4.0);
+        charlie.rateMovie(15, 4.0);
 
         User diana = addUser("diana", "diana@email.com", "password123");
         diana.addFavoriteGenre("Romance");
         diana.addFavoriteGenre("Drama");
-        diana.rateMovie(11, 5.0); // Casablanca
-        diana.rateMovie(12, 4.0); // Titanic
-        diana.rateMovie(5, 4.5); // Forrest Gump
-        diana.rateMovie(2, 4.0); // The Shawshank Redemption
+        diana.rateMovie(11, 5.0);
+        diana.rateMovie(12, 4.0);
+        diana.rateMovie(5, 4.5);
+        diana.rateMovie(2, 4.0);
     }
 
-    // Add a new user
     public User addUser(String username, String email, String password) {
         User user = new User(nextId++, username, email, password);
         users.add(user);
@@ -62,27 +55,22 @@ public class UserDatabase {
         return user;
     }
 
-    // Get user by ID
     public User getUserById(int userId) {
         return userMap.get(userId);
     }
 
-    // Get user by username
     public User getUserByUsername(String username) {
         return usernameMap.get(username.toLowerCase());
     }
 
-    // Get all users
     public List<User> getAllUsers() {
         return new ArrayList<>(users);
     }
 
-    // Check if username exists
     public boolean usernameExists(String username) {
         return usernameMap.containsKey(username.toLowerCase());
     }
 
-    // Authenticate user
     public User authenticateUser(String username, String password) {
         User user = getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
@@ -91,12 +79,10 @@ public class UserDatabase {
         return null;
     }
 
-    // Get user count
     public int getUserCount() {
         return users.size();
     }
 
-    // Print all users
     public void printAllUsers() {
         System.out.println("\n=== ALL USERS ===");
         for (User user : users) {
@@ -104,7 +90,6 @@ public class UserDatabase {
         }
     }
 
-    // Get users by favorite genre
     public List<User> getUsersByFavoriteGenre(String genre) {
         List<User> result = new ArrayList<>();
         for (User user : users) {
@@ -115,7 +100,6 @@ public class UserDatabase {
         return result;
     }
 
-    // Get most active users (by number of ratings)
     public List<User> getMostActiveUsers(int limit) {
         return users.stream()
                 .sorted((u1, u2) -> Integer.compare(u2.getMovieRatings().size(), u1.getMovieRatings().size()))

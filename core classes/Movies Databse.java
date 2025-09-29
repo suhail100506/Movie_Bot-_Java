@@ -2,9 +2,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Simple Movie Database class to store and manage movies
- */
 public class MovieDatabase {
 
     private List<Movie> movies;
@@ -18,7 +15,6 @@ public class MovieDatabase {
         initializeSampleMovies();
     }
 
-    // Initialize with some sample movies
     private void initializeSampleMovies() {
         addMovie("The Dark Knight", "Action", 2008, 9.0, "Christopher Nolan",
                 "Batman faces the Joker in this thrilling superhero film", 152);
@@ -62,7 +58,6 @@ public class MovieDatabase {
                 "Two detectives hunt a serial killer who uses the seven deadly sins", 127);
     }
 
-    // Add a new movie
     public Movie addMovie(String title, String genre, int year, double rating,
             String director, String description, int duration) {
         Movie movie = new Movie(nextId++, title, genre, year, rating, director, description, duration);
@@ -71,52 +66,44 @@ public class MovieDatabase {
         return movie;
     }
 
-    // Get movie by ID
     public Movie getMovieById(int id) {
         return movieMap.get(id);
     }
 
-    // Get all movies
     public List<Movie> getAllMovies() {
         return new ArrayList<>(movies);
     }
 
-    // Search movies by title
     public List<Movie> searchByTitle(String title) {
         return movies.stream()
                 .filter(movie -> movie.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
-    // Search movies by genre
     public List<Movie> searchByGenre(String genre) {
         return movies.stream()
                 .filter(movie -> movie.getGenre().equalsIgnoreCase(genre))
                 .collect(Collectors.toList());
     }
 
-    // Search movies by year
     public List<Movie> searchByYear(int year) {
         return movies.stream()
                 .filter(movie -> movie.getYear() == year)
                 .collect(Collectors.toList());
     }
 
-    // Search movies by director
     public List<Movie> searchByDirector(String director) {
         return movies.stream()
                 .filter(movie -> movie.getDirector().toLowerCase().contains(director.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
-    // Get movies with rating above threshold
     public List<Movie> getMoviesWithMinRating(double minRating) {
         return movies.stream()
                 .filter(movie -> movie.getRating() >= minRating)
                 .collect(Collectors.toList());
     }
 
-    // Get top rated movies
     public List<Movie> getTopRatedMovies(int limit) {
         return movies.stream()
                 .sorted((m1, m2) -> Double.compare(m2.getRating(), m1.getRating()))
@@ -124,14 +111,12 @@ public class MovieDatabase {
                 .collect(Collectors.toList());
     }
 
-    // Get movies by multiple genres
     public List<Movie> getMoviesByGenres(List<String> genres) {
         return movies.stream()
                 .filter(movie -> genres.contains(movie.getGenre()))
                 .collect(Collectors.toList());
     }
 
-    // Get all unique genres
     public List<String> getAllGenres() {
         return movies.stream()
                 .map(Movie::getGenre)
@@ -140,26 +125,22 @@ public class MovieDatabase {
                 .collect(Collectors.toList());
     }
 
-    // Get movies from a specific year range
     public List<Movie> getMoviesByYearRange(int startYear, int endYear) {
         return movies.stream()
                 .filter(movie -> movie.getYear() >= startYear && movie.getYear() <= endYear)
                 .collect(Collectors.toList());
     }
 
-    // Get random movies
     public List<Movie> getRandomMovies(int count) {
         List<Movie> shuffled = new ArrayList<>(movies);
         Collections.shuffle(shuffled);
         return shuffled.stream().limit(count).collect(Collectors.toList());
     }
 
-    // Get movie count
     public int getMovieCount() {
         return movies.size();
     }
 
-    // Print all movies
     public void printAllMovies() {
         System.out.println("\n=== ALL MOVIES ===");
         for (Movie movie : movies) {
@@ -167,7 +148,6 @@ public class MovieDatabase {
         }
     }
 
-    // Print movies by genre
     public void printMoviesByGenre(String genre) {
         List<Movie> genreMovies = searchByGenre(genre);
         System.out.println("\n=== " + genre.toUpperCase() + " MOVIES ===");
@@ -176,3 +156,4 @@ public class MovieDatabase {
         }
     }
 }
+
