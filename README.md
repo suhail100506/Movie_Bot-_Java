@@ -1,4 +1,4 @@
-🚀Movie_Bot_Java
+<img width="749" height="583" alt="image" src="https://github.com/user-attachments/assets/4557a3ea-f899-4876-b6af-6661bf45f1c9" />🚀Movie_Bot_Java
 
 Design and develop a movie recommendation system in Python that allows users to discover movies based on their preferences such as genre, language, actor, or ratings. The system should analyze user inputs using recommendation algorithms (content-based, collaborative, or hybrid filtering) and suggest personalized movies. Importantly, it must provide only legal streaming or download links from authorized platforms using APIs.
 
@@ -42,6 +42,7 @@ Prerequisites:
         ->Java JDK 21+
         ->Maven
         ->API key from TMDb API.
+
 
 
 
